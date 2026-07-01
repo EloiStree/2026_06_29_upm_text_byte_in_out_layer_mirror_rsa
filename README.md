@@ -40,3 +40,6 @@ Example:
 Old Video:
 - https://youtu.be/L_VJgbrHmzw?t=807
 - https://www.youtube.com/watch?v=oKf_EAU-ct4&t=542s
+
+Sign Message
+https://eloistree.github.io/SignMetaMaskTextHere/index.html?q=test
