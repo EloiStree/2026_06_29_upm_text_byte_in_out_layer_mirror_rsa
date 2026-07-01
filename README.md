@@ -26,5 +26,6 @@ Not mirror:
 
 Old Mirror project to learn from:  
 [<img width="1914" height="1021" alt="image" src="https://github.com/user-attachments/assets/fb6cda20-3280-45f2-a442-bd5fa90ed9cf" />](https://github.com/EloiStree/2024_06_11_HelloMirrorDroneMultiStartPackUnity)
-Example https://github.com/EloiStree/2024_06_11_HelloMirrorDroneMultiStartPackUnity
-https://github.com/EloiStree/2024_06_15_DownloadServerIpFromPage.git
+Example:
+- https://github.com/EloiStree/2024_06_11_HelloMirrorDroneMultiStartPackUnity
+- https://github.com/EloiStree/2024_06_15_upm_download_server_ip_from_page
