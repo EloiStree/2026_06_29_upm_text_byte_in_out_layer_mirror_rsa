@@ -9,3 +9,22 @@ https://assetstore.unity.com/packages/tools/network/mirror-129321
 
 
 
+
+Chess with Mirror:
+- https://github.com/EloiStree/2026_07_23_workshop_hexagonal_chess_xr
+
+- https://github.com/EloiStree/2025_01_06_upm_pbit4096_b58_pkcs1_sha256
+- https://github.com/EloiStree/2024_08_06_upm_path_type_read_write
+
+
+Not mirror:
+- https://github.com/EloiStree/2025_03_11_upm_ntp_ws_client_integer_lobby_setup
+
+
+
+
+
+Old Mirror project to learn from:  
+[<img width="1914" height="1021" alt="image" src="https://github.com/user-attachments/assets/fb6cda20-3280-45f2-a442-bd5fa90ed9cf" />](https://github.com/EloiStree/2024_06_11_HelloMirrorDroneMultiStartPackUnity)
+Example https://github.com/EloiStree/2024_06_11_HelloMirrorDroneMultiStartPackUnity
+https://github.com/EloiStree/2024_06_15_DownloadServerIpFromPage.git
