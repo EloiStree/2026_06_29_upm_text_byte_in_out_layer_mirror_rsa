@@ -30,3 +30,8 @@ Example:
 - https://github.com/EloiStree/2024_06_11_HelloMirrorDroneMultiStartPackUnity
 - https://github.com/EloiStree/2024_06_15_upm_download_server_ip_from_page
 - https://github.com/EloiStree/2024_04_23_upm_rsa_mirror_tunneling_drone
+
+
+Old Video:
+- https://youtu.be/L_VJgbrHmzw?t=807
+- https://www.youtube.com/watch?v=oKf_EAU-ct4&t=542s
