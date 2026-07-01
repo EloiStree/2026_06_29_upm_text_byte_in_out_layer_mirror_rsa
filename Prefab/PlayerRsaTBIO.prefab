@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3800981014639819160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7271424146464223891}
+  - component: {fileID: 551523973560648116}
+  - component: {fileID: 2559320394782058673}
+  - component: {fileID: 9119655546380388528}
+  m_Layer: 0
+  m_Name: PlayerRsaTBIO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7271424146464223891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.09915, y: 0.02424, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &551523973560648116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
+  sceneId: 0
+  _assetId: 3797306241
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &2559320394782058673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47314032eff0374a81eda5342a9dc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_PlayerInOut
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_playerIndex: 0
+  m_asymmetricPublicKey: 
+  m_giveRandomPlayerIndexOnStart: 1
+  m_onBytesReceivedFromClientToServer:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onTextReceivedFromClientToServer:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onBytesReceivedFromServerToClient:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onTextReceivedFromServerToClient:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &9119655546380388528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ada949681146c4086da1d0177fa9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_PlayerAuthRSA
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_validatedServerPublicKeyB58: 
+  m_onValidatedPublicKey:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2559320394782058673}
+        m_TargetAssemblyTypeName: Eloi.TBIO.TBIOMono_PlayerInOut, be.elab.tbiomirror.Runtime
+        m_MethodName: SetServerOnlyAsymmetricPublicKey
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_clientPublicKeyRsa: 
+  m_clientPrivateKeyRsa: 
+  m_clientPublicKeyB58: 
+  m_clientPrivateKeyB58: 
+  m_isTheServerHost: 0
+  m_handshakeState: 0
+  m_handShakeAsEnum: 0
+  m_messageToSign: 
+  m_clientMessageSignedB64: 
+  m_serverPublicKeyReceived: 
+  m_serverGuidSent: 
+  m_serverGuidSentAsByte: 
+  m_serverB64SignedMessage: 
+  m_isHandshakeEstablished: 0
+  m_onRsaHandshakeValidatedClientEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onRsaHandshakeValidatedServerEvent:
+    m_PersistentCalls:
+      m_Calls: []
