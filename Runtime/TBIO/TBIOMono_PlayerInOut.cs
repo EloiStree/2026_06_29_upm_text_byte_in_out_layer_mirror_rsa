@@ -6,8 +6,32 @@ using System.Collections.Generic;
 
 namespace Eloi.TBIO
 {
+
     public class TBIOMono_PlayerInOut : NetworkBehaviour
     {
+        #region USE LOCAL PLAYER TO SERVER
+        static TBIOMono_PlayerInOut m_localPlayer;
+        public static void GetLocalPlayer(out TBIOMono_PlayerInOut localPlayer)
+        {
+            localPlayer = m_localPlayer;
+        }
+        public static TBIOMono_PlayerInOut GetLocalPlayer()
+        {
+            return m_localPlayer;
+        }
+        public static void SendTextToServerFromLocalPlayer(string text)
+        {
+            if (m_localPlayer == null) return;
+            m_localPlayer.SendTextToServer(text);
+        }
+        public static void SendBytesToServerFromLocalPlayer(byte[] data)
+        {
+            if (m_localPlayer == null) return;
+            m_localPlayer.SendByteToServer(data);
+        }
+        #endregion
+
+
 
         #region HOOK ACTION FOR SERVER TO HOOK AT
         static Action<TBIOMono_PlayerInOut, byte[]> m_onAnyPlayerBytesForServer;
@@ -320,7 +344,10 @@ namespace Eloi.TBIO
             base.OnStartClient();
             if (m_useDebugLog)
                 Debug.Log("A new player has joined the game!", this);
-         
+
+            if (netIdentity.isLocalPlayer)
+                m_localPlayer = this;
+
         }
         public override void OnStopClient()
         {

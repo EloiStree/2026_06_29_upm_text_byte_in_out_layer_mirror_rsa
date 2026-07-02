@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 551523973560648116}
   - component: {fileID: 2559320394782058673}
   - component: {fileID: 9119655546380388528}
+  - component: {fileID: 1700152876209615489}
+  - component: {fileID: 4042548780084699580}
   m_Layer: 0
   m_Name: PlayerRsaTBIO
   m_TagString: Untagged
@@ -66,6 +68,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  m_playerNetworkIndex: 0
   m_playerIndex: 0
   m_asymmetricPublicKey: 
   m_giveRandomPlayerIndexOnStart: 1
@@ -81,6 +84,7 @@ MonoBehaviour:
   m_onTextReceivedFromServerToClient:
     m_PersistentCalls:
       m_Calls: []
+  m_useDebugLog: 1
 --- !u!114 &9119655546380388528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +100,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  m_validatedServerPublicKeyB58: 
+  m_validatedServerPublicKeyAsTagB58: 
   m_onValidatedPublicKey:
     m_PersistentCalls:
       m_Calls:
@@ -132,3 +136,57 @@ MonoBehaviour:
   m_onRsaHandshakeValidatedServerEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1700152876209615489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b37c599a6d740f4399732219d5570a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_PrimitiveToBytes
+  m_onEmittedByte:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2559320394782058673}
+        m_TargetAssemblyTypeName: Eloi.TBIO.TBIOMono_PlayerInOut, be.elab.tbiomirror.Runtime
+        m_MethodName: SendByteToServer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4042548780084699580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9833f37fbf1f7eb4aab37bfc3c6eacf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_PrimitiveToText
+  m_onEmittedText:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2559320394782058673}
+        m_TargetAssemblyTypeName: Eloi.TBIO.TBIOMono_PlayerInOut, be.elab.tbiomirror.Runtime
+        m_MethodName: SendTextToServer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
