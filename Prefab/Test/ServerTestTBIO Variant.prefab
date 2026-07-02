@@ -1,5 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &573531634918394809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2865409601712692206}
+  - component: {fileID: 1867820836873007819}
+  m_Layer: 0
+  m_Name: Debug Received
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2865409601712692206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573531634918394809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8392756719805899501}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1867820836873007819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573531634918394809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901376a06d4f40743a908c32900f9a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_ServerInOutDebug
+  m_toListenTo: {fileID: 2039738701727057423}
+  m_forDebug:
+    m_lastPlayerTextReceived: 
+    m_lastPlayerByteReceived: 
+    m_lastPlayerReceivedEvent: {fileID: 0}
+    m_playersValidated: []
+    m_playersValidatedIndex: 
+    m_playersValidatedPublicKeyB58: []
 --- !u!1 &2759706385913627685
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +229,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8449423742235609676, guid: 8863f24da2f0fff49b940cfeb0c335d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2865409601712692206}
     - targetCorrespondingSourceObject: {fileID: 8449423742235609676, guid: 8863f24da2f0fff49b940cfeb0c335d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5028652556647226375}

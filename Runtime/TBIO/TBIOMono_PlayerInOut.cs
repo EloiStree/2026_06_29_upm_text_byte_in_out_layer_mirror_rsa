@@ -9,29 +9,32 @@ namespace Eloi.TBIO
     public class TBIOMono_PlayerInOut : NetworkBehaviour
     {
 
-        static Action<TBIOMono_PlayerInOut, byte[]> m_on_anyPlayerBytesForServer;
-        static Action<TBIOMono_PlayerInOut, string> m_on_anyPlayerTextForServer;
-
-        static List<TBIOMono_PlayerInOut> m_players = new List<TBIOMono_PlayerInOut>();
+        #region HOOK ACTION FOR SERVER TO HOOK AT
+        static Action<TBIOMono_PlayerInOut, byte[]> m_onAnyPlayerBytesForServer;
+        static Action<TBIOMono_PlayerInOut, string> m_onAnyPlayerTextForServer;
 
         public static void AddPlayersInOutTextListener(Action<TBIOMono_PlayerInOut, string> onAnyPlayerTextForServer)
         {
-            m_on_anyPlayerTextForServer += onAnyPlayerTextForServer;
+            m_onAnyPlayerTextForServer += onAnyPlayerTextForServer;
         }
         public static void AddPlayerInOutByteListener(Action<TBIOMono_PlayerInOut, byte[]> onAnyPlayerBytesForServer)
         {
-            m_on_anyPlayerBytesForServer += onAnyPlayerBytesForServer;
+            m_onAnyPlayerBytesForServer += onAnyPlayerBytesForServer;
         }
 
         public static void RemovePlayersInOutTextListener(Action<TBIOMono_PlayerInOut, string> onAnyPlayerTextForServer)
         {
-            m_on_anyPlayerTextForServer -= onAnyPlayerTextForServer;
+            m_onAnyPlayerTextForServer -= onAnyPlayerTextForServer;
         }
         public static void RemovePlayerInOutByteListener(Action<TBIOMono_PlayerInOut, byte[]> onAnyPlayerBytesForServer)
         {
-            m_on_anyPlayerBytesForServer -= onAnyPlayerBytesForServer;
+            m_onAnyPlayerBytesForServer -= onAnyPlayerBytesForServer;
         }
 
+        #endregion
+
+        #region PLAYER LIST IN GAME
+        static List<TBIOMono_PlayerInOut> m_players = new List<TBIOMono_PlayerInOut>();
         public static void GetAllPlayersInOut(out List<TBIOMono_PlayerInOut> players)
         {
             players = m_players;
@@ -55,7 +58,6 @@ namespace Eloi.TBIO
             }
             playerIndexList = list;
         }
-
         public static void GetPlayerPublicKeyList(out List<string> playerPublicKeyList)
         {
             List<string> list = new List<string>();
@@ -65,7 +67,10 @@ namespace Eloi.TBIO
             }
             playerPublicKeyList = list;
         }
+        #endregion
 
+
+        #region SEND DATA FROM SERVER TO CLIENT
         public static void ServerOnlySendTextToAllPlayer(string text)
         {
             foreach (var player in m_players)
@@ -110,6 +115,8 @@ namespace Eloi.TBIO
             if (player == null) return;
             player.SendByteToThisPlayer(data);
         }
+        #endregion
+
 
 
 
@@ -126,13 +133,19 @@ namespace Eloi.TBIO
 
         [SerializeField]
         [SyncVar]
+        [Tooltip("UInt ID Given by the Mirror Network at creation")]
         uint m_playerNetworkIndex = 0;
+
         [SerializeField][SyncVar(hook = nameof(HookPlayerIndexChanged))]
+        [Tooltip("Int ID to be set by developer based on the public key")]
         int m_playerIndex = 0;
+
         [SerializeField][SyncVar(hook = nameof(HookAsymmetricPublicKeyChanged))]
+        [Tooltip("RSA Public Key set by the developer if public key is signed and validated")]
         string m_asymmetricPublicKey = "";
 
 
+        [Tooltip("Give a random negative number to player to be override by developer")]
         public bool m_giveRandomPlayerIndexOnStart = true;
 
 
@@ -149,11 +162,11 @@ namespace Eloi.TBIO
         {
             m_onBytesReceivedFromClientToServer.AddListener((data) =>
             {
-                m_on_anyPlayerBytesForServer?.Invoke(this, data);
+                m_onAnyPlayerBytesForServer?.Invoke(this, data);
             });
             m_onTextReceivedFromClientToServer.AddListener((text) =>
             {
-                m_on_anyPlayerTextForServer?.Invoke(this, text);
+                m_onAnyPlayerTextForServer?.Invoke(this, text);
             });
 
         }
