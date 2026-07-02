@@ -9,8 +9,6 @@ namespace Eloi.TBIO
 {
     public class TBIOMono_ServerInOut : MonoBehaviour
     {
-
-
         void OnEnable()
         {
             TBIOMono_PlayerInOut.AddPlayersInOutTextListener(OnAnyPlayerTextForServer);
@@ -26,7 +24,6 @@ namespace Eloi.TBIO
 
 
         void RefreshList() {
-            Debug.Log("Refreshing player list");
             TBIOMono_PlayerInOut.GetAllPlayersInOut(out m_playersValidated);
 
             if (m_playersValidatedIndex.Length != m_playersValidated.Count)
@@ -50,6 +47,8 @@ namespace Eloi.TBIO
             public UnityEvent<TBIOMono_PlayerInOut, byte[]> m_onPlayerByte;
             public UnityEvent<string> m_onPlayerTextWithoutSource;
             public UnityEvent<byte[]> m_onPlayerByteWithoutSource;
+            public UnityEvent<string,string> m_onPlayerTextWithPublicKey;
+            public UnityEvent<string, byte[]> m_onPlayerByteWithPublicKey;
         }
 
         [SerializeField] string m_lastPlayerTextReceived = "";
@@ -70,6 +69,7 @@ namespace Eloi.TBIO
         {
             m_events.m_onPlayerText?.Invoke(player, text);
             m_events.m_onPlayerTextWithoutSource?.Invoke(text);
+            m_events.m_onPlayerTextWithPublicKey?.Invoke(player.GetAsymmetricPublicKey(), text);
             m_lastPlayerTextReceived = text;
             m_lastPlayerReceivedEvent= player;
             if (m_useDebugLog)
@@ -80,14 +80,14 @@ namespace Eloi.TBIO
         {
             m_events.m_onPlayerByte?.Invoke(player, data);
             m_events.m_onPlayerByteWithoutSource?.Invoke(data);
+            m_events.m_onPlayerByteWithPublicKey?.Invoke(player.GetAsymmetricPublicKey(), data);
             m_lastPlayerByteReceived = data;
             m_lastPlayerReceivedEvent = player;
             if (m_useDebugLog)
                 Debug.Log($"Server received bytes from player {player.name}: {BitConverter.ToString(data)}");
         }
 
-
-        public void ServerSendTexToClients(string text)
+        public void ServerSendTextToClients(string text)
         {
             TBIOMono_PlayerInOut.ServerOnlySendTextToAllPlayer(text);
         }
@@ -98,21 +98,21 @@ namespace Eloi.TBIO
 
         public void ServerSendTexToClientByIndex(int playerIndex, string text)
         {
-            TBIOMono_PlayerInOut.ServerOnlySendTextToPlayerIndex(playerIndex, text);
+            TBIOMono_PlayerInOut.ServerOnlySendTextToPlayerByIndex(playerIndex, text);
         }
         public void ServerSendBytesToClientByIndex(int playerIndex, byte[] data)
         {
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerIndex(playerIndex, data);
+            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerByIndex(playerIndex, data);
         }
 
-        public void ServerSendTextToClientByPublicKeyB58(string publicKeyB58, string text)
+        public void ServerSendTextToClientByPublicKey(string publicKey, string text)
         {
-            TBIOMono_PlayerInOut.ServerOnlySendTextToPlayerPublicKey(publicKeyB58, text);
+            TBIOMono_PlayerInOut.ServerOnlySendTextToPlayerByPublicKey(publicKey, text);
         }
 
-        public void ServerSendBytesToClientByPublicKeyB58(string publicKeyB58, byte[] data)
+        public void ServerSendBytesToClientByPublicKey(string publicKey, byte[] data)
         {
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerPublicKey(publicKeyB58, data);
+            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerByPublicKey(publicKey, data);
         }
     }
 }

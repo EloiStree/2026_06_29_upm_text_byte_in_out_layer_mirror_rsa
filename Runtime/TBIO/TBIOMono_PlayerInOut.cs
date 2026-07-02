@@ -83,28 +83,28 @@ namespace Eloi.TBIO
             }
         }
 
-        public static void ServerOnlySendTextToPlayerIndex(int playerIndex, string text)
+        public static void ServerOnlySendTextToPlayerByIndex(int playerIndex, string text)
         {
             GetPlayerByIndex(playerIndex, out TBIOMono_PlayerInOut player);
             if (player == null) return;
             player.SendTextToThisPlayer(text);
         }
 
-        public static void ServerOnlySendBytesToPlayerIndex(int playerIndex, byte[] data)
+        public static void ServerOnlySendBytesToPlayerByIndex(int playerIndex, byte[] data)
         {
             GetPlayerByIndex(playerIndex, out TBIOMono_PlayerInOut player);
             if (player == null) return;
             player.SendByteToThisPlayer(data);
         }
 
-        public static void ServerOnlySendTextToPlayerPublicKey(string publicKey, string text)
+        public static void ServerOnlySendTextToPlayerByPublicKey(string publicKey, string text)
         {
             GetPlayerByPublicKey(publicKey, out TBIOMono_PlayerInOut player);
             if (player == null) return;
             player.SendTextToThisPlayer(text);
         }
 
-        public static void ServerOnlySendBytesToPlayerPublicKey(string publicKey, byte[] data)
+        public static void ServerOnlySendBytesToPlayerByPublicKey(string publicKey, byte[] data)
         {
             GetPlayerByPublicKey(publicKey, out TBIOMono_PlayerInOut player);
             if (player == null) return;
@@ -113,7 +113,7 @@ namespace Eloi.TBIO
 
 
 
-            public static void IsOnServer(out bool isOnServer)
+        public static void IsOnServer(out bool isOnServer)
         {
             isOnServer = NetworkServer.active;
         }
@@ -172,9 +172,17 @@ namespace Eloi.TBIO
         {
             playerIndexGivenByServer = m_playerIndex;
         }
+        public int GetPlayerIndex()
+        {
+            return m_playerIndex;
+        }
         public void GetAsymmetricPublicKey(out string asymmetricPublicKey)
         {
             asymmetricPublicKey = m_asymmetricPublicKey;
+        }
+        public string GetAsymmetricPublicKey()
+        {
+            return m_asymmetricPublicKey;
         }
 
         public void HookPlayerIndexChanged(int oldValue, int newValue)
