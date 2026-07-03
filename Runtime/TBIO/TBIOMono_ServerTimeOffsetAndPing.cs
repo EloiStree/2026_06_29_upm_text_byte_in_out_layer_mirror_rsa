@@ -58,13 +58,16 @@ namespace Eloi.TBIO
             m_serverAtReceivedLocalTimeUTC = serverLocalTimeUTC;
             GetComputerTicks(out ulong ticks);
             m_playerCallbackLocalTimeUTC = ticks;
-            CmdInformServerOfCallbackLocalTime(m_playerCallbackLocalTimeUTC);
+            CmdInformServerOfFullTiming(playerLocalTimeUTC, serverLocalTimeUTC, m_playerCallbackLocalTimeUTC);
             ComputerDeductionOfPing();
         }
         [Command]
-        void CmdInformServerOfCallbackLocalTime(ulong playerCallbackLocalTimeUTC)
+        void CmdInformServerOfFullTiming(ulong playerLocalTimeUTC, ulong serverLocalTimeUTC,ulong playerCallbackLocalTimeUTC)
         {
+            m_playerSentLocalTimeUTC = playerLocalTimeUTC;
+            m_serverAtReceivedLocalTimeUTC = serverLocalTimeUTC;
             m_playerCallbackLocalTimeUTC = playerCallbackLocalTimeUTC;
+
             ComputerDeductionOfPing();
 
             m_sharedClientPingInMilliseconds = m_tickPingSendToReceivedHalfInMilliseconds;
