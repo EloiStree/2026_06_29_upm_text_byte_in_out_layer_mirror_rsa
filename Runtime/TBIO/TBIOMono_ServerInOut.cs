@@ -29,8 +29,8 @@ namespace Eloi.TBIO
             public UnityEvent<byte[]> m_onPlayerByteWithoutSource;
 
             [Header("With Player Info")]
-            public UnityEvent<TBIOMono_PlayerInOut, string> m_onPlayerText;
-            public UnityEvent<TBIOMono_PlayerInOut, byte[]> m_onPlayerByte;
+            public UnityEvent<TBIOMono_PlayerInOut, string> m_onPlayerTextWithSource;
+            public UnityEvent<TBIOMono_PlayerInOut, byte[]> m_onPlayerByteWithSource;
             [Header("With Player ID")]
             public UnityEvent<string, string> m_onPlayerTextWithPublicKey;
             public UnityEvent<string, byte[]> m_onPlayerByteWithPublicKey;
@@ -41,7 +41,7 @@ namespace Eloi.TBIO
 
         void OnAnyPlayerTextForServer(TBIOMono_PlayerInOut player, string text)
         {
-            m_events.m_onPlayerText?.Invoke(player, text);
+            m_events.m_onPlayerTextWithSource?.Invoke(player, text);
             m_events.m_onPlayerTextWithoutSource?.Invoke(text);
             m_events.m_onPlayerTextWithPublicKey?.Invoke(player.GetAsymmetricPublicKey(), text);
             m_events.m_onPlayerTextWithIndex?.Invoke(player.GetPlayerIndex(), text);
@@ -49,7 +49,7 @@ namespace Eloi.TBIO
 
         void OnAnyPlayerBytesForServer(TBIOMono_PlayerInOut player, byte[] data)
         {
-            m_events.m_onPlayerByte?.Invoke(player, data);
+            m_events.m_onPlayerByteWithSource?.Invoke(player, data);
             m_events.m_onPlayerByteWithoutSource?.Invoke(data);
             m_events.m_onPlayerByteWithPublicKey?.Invoke(player.GetAsymmetricPublicKey(), data);
             m_events.m_onPlayerByteWithIndex?.Invoke(player.GetPlayerIndex(), data);
@@ -60,18 +60,18 @@ namespace Eloi.TBIO
         {
             TBIOMono_PlayerInOut.ServerOnlySendTextToAllPlayer(text);
         }
-        public void ServerSendBytesToClients(byte[] data)
+        public void ServerSendByteToClients(byte[] data)
         {
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToAllPlayer(data);
+            TBIOMono_PlayerInOut.ServerOnlySendByteToAllPlayer(data);
         }
 
-        public void ServerSendTexToClientByIndex(int playerIndex, string text)
+        public void ServerSendTextToClientByIndex(int playerIndex, string text)
         {
             TBIOMono_PlayerInOut.ServerOnlySendTextToPlayerByIndex(playerIndex, text);
         }
-        public void ServerSendBytesToClientByIndex(int playerIndex, byte[] data)
+        public void ServerSendByteToClientByIndex(int playerIndex, byte[] data)
         {
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerByIndex(playerIndex, data);
+            TBIOMono_PlayerInOut.ServerOnlySendByteToPlayerByIndex(playerIndex, data);
         }
 
         public void ServerSendTextToClientByPublicKey(string publicKey, string text)
@@ -79,9 +79,9 @@ namespace Eloi.TBIO
             TBIOMono_PlayerInOut.ServerOnlySendTextToPlayerByPublicKey(publicKey, text);
         }
 
-        public void ServerSendBytesToClientByPublicKey(string publicKey, byte[] data)
+        public void ServerSendByteToClientByPublicKey(string publicKey, byte[] data)
         {
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerByPublicKey(publicKey, data);
+            TBIOMono_PlayerInOut.ServerOnlySendByteToPlayerByPublicKey(publicKey, data);
         }
 
 
@@ -89,17 +89,17 @@ namespace Eloi.TBIO
         public void ServerSendIntegerToClients(int integerValue)
         {
             byte[] data = BitConverter.GetBytes(integerValue);
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToAllPlayer(data);
+            TBIOMono_PlayerInOut.ServerOnlySendByteToAllPlayer(data);
         }
         public void ServerSendIntegerToClientByIndex(int playerIndex, int integerValue)
         {
             byte[] data = BitConverter.GetBytes(integerValue);
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerByIndex(playerIndex, data);
+            TBIOMono_PlayerInOut.ServerOnlySendByteToPlayerByIndex(playerIndex, data);
         }
         public void ServerSendIntegerToClientByPublicKey(string publicKey, int integerValue)
         {
             byte[] data = BitConverter.GetBytes(integerValue);
-            TBIOMono_PlayerInOut.ServerOnlySendBytesToPlayerByPublicKey(publicKey, data);
+            TBIOMono_PlayerInOut.ServerOnlySendByteToPlayerByPublicKey(publicKey, data);
         }
         #endregion
     }
