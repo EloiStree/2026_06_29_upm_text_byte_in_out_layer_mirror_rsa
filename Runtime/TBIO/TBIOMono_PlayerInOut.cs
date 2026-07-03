@@ -21,12 +21,12 @@ namespace Eloi.TBIO
         }
         public static void SendTextToServerFromLocalPlayer(string text)
         {
-            if (m_localPlayer == null) return;
+            //if (m_localPlayer == null) return;
             m_localPlayer.SendTextToServer(text);
         }
         public static void SendBytesToServerFromLocalPlayer(byte[] data)
         {
-            if (m_localPlayer == null) return;
+            //if (m_localPlayer == null) return;
             m_localPlayer.SendByteToServer(data);
         }
         #endregion
@@ -174,17 +174,17 @@ namespace Eloi.TBIO
 
 
         [Header("For Server")]
-        public UnityEvent<byte[]> m_onBytesReceivedFromClientToServer;
+        public UnityEvent<byte[]> m_onByteReceivedFromClientToServer;
         public UnityEvent<string> m_onTextReceivedFromClientToServer;
 
         [Header("For Client")]
-        public UnityEvent<byte[]> m_onBytesReceivedFromServerToClient;
+        public UnityEvent<byte[]> m_onByteReceivedFromServerToClient;
         public UnityEvent<string> m_onTextReceivedFromServerToClient;
 
 
         public void Awake()
         {
-            m_onBytesReceivedFromClientToServer.AddListener((data) =>
+            m_onByteReceivedFromClientToServer.AddListener((data) =>
             {
                 m_onAnyPlayerBytesForServer?.Invoke(this, data);
             });
@@ -248,7 +248,7 @@ namespace Eloi.TBIO
         [ClientRpc][Server]
         public void RpcSendBytesServerToAllPlayer(byte[] data)
         {
-            m_onBytesReceivedFromServerToClient?.Invoke(data);
+            m_onByteReceivedFromServerToClient?.Invoke(data);
         }
 
         [ClientRpc][Server]
@@ -274,7 +274,7 @@ namespace Eloi.TBIO
         [TargetRpc][Server]
         public void RpcSendBytesServerToPlayer(NetworkConnectionToClient target ,byte[] data)
         {
-            m_onBytesReceivedFromServerToClient?.Invoke(data);
+            m_onByteReceivedFromServerToClient?.Invoke(data);
         }
 
         [TargetRpc][Server]
@@ -291,7 +291,7 @@ namespace Eloi.TBIO
         void CmdSendBytesClientToServer(byte[] data)
         {
             if (data == null) return;
-            m_onBytesReceivedFromClientToServer?.Invoke(data);
+            m_onByteReceivedFromClientToServer?.Invoke(data);
         }
 
         [Command] 
