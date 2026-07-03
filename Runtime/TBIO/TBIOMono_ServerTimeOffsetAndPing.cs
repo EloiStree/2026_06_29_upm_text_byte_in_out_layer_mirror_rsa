@@ -54,7 +54,6 @@ namespace Eloi.TBIO
         void CmdAskServerTimeOffset(ulong playerLocalTimeUTC) {
             GetComputerTicks(out ulong serverTicks);
             RpcCallbackPlayerTimeOffset(connectionToClient, playerLocalTimeUTC, serverTicks);
-
         }
 
         [TargetRpc]

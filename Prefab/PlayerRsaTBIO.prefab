@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 4042548780084699580}
   - component: {fileID: 7986476484013751663}
   - component: {fileID: 6446577435688160987}
+  - component: {fileID: 4935629489939890621}
   m_Layer: 0
   m_Name: PlayerRsaTBIO
   m_TagString: Untagged
@@ -312,6 +313,29 @@ MonoBehaviour:
   m_onTextureGenerated:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4935629489939890621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26946335e1404546ac69adea87669a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_RenamedPlayer
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_whatToRename: {fileID: 3800981014639819160}
+  m_isLocalPlayer: 0
+  m_isServer: 0
+  m_isOwned: 0
+  m_onStartClientCalled: 0
+  m_onStartServerCalled: 0
+  m_onStartLocalPlayerCalled: 0
+  m_onStartAuthorityCalled: 0
 --- !u!1 &8137200327353159089
 GameObject:
   m_ObjectHideFlags: 0
