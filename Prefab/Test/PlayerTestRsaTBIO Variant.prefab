@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2453993250706322518
 Transform:
   m_ObjectHideFlags: 0
@@ -81,6 +81,10 @@ MonoBehaviour:
   m_integerReceived: 0
   m_timeBetweenPing: 1
   m_lastSendInteger: 0
+  m_useDebugLogStart: 0
+  m_useDebugLogPingPong: 0
+  m_useDebugLogIntegerReceived: 0
+  m_useDebugSoundPong: 0
 --- !u!82 &7462314711637035997
 AudioSource:
   m_ObjectHideFlags: 0

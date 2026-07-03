@@ -1,3 +1,11 @@
+```init
+git clone https://github.com/EloiStree/2026_06_29_upm_text_byte_in_out_layer_mirror_rsa.git Packages/be.elab.tbiolayermirror
+```
+```init
+git submodule add https://github.com/EloiStree/2026_06_29_upm_text_byte_in_out_layer_mirror_rsa.git Packages/be.elab.tbiolayermirror
+```
+
+
 # Text Byte In Out Mirror RSA
 
 > Mirror version of 2026_06_29_upm_text_byte_in_out_layer
