@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &491063547708039467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2272245335358250712}
+  - component: {fileID: 3570749435154777291}
+  m_Layer: 0
+  m_Name: ReceivedFromServer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2272245335358250712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491063547708039467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7271424146464223891}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3570749435154777291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491063547708039467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e6806d5d41a914999074e743215f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_DebugReceivedInFromServer
+  m_playerInOut: {fileID: 2559320394782058673}
+  m_totalCharReceived: 0
+  m_totalByteReceived: 0
+  m_textReceivedSize: 0
+  m_textReceived: 
+  m_byteReceivedSize: 0
+  m_byteReceived: 
 --- !u!1 &3800981014639819160
 GameObject:
   m_ObjectHideFlags: 0
@@ -22,7 +73,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7271424146464223891
 Transform:
   m_ObjectHideFlags: 0
@@ -35,7 +86,9 @@ Transform:
   m_LocalPosition: {x: 0.09915, y: 0.02424, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3977941887246160006}
+  - {fileID: 2272245335358250712}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &551523973560648116
@@ -74,13 +127,13 @@ MonoBehaviour:
   m_playerIndex: 0
   m_asymmetricPublicKey: 
   m_giveRandomPlayerIndexOnStart: 1
-  m_onBytesReceivedFromClientToServer:
+  m_onByteReceivedFromClientToServer:
     m_PersistentCalls:
       m_Calls: []
   m_onTextReceivedFromClientToServer:
     m_PersistentCalls:
       m_Calls: []
-  m_onBytesReceivedFromServerToClient:
+  m_onByteReceivedFromServerToClient:
     m_PersistentCalls:
       m_Calls: []
   m_onTextReceivedFromServerToClient:
@@ -223,6 +276,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_sharedClientPingInMilliseconds: 0
+  m_sharedClientOffsetInMilliseconds: 0
   m_onTickOffset:
     m_PersistentCalls:
       m_Calls: []
@@ -235,12 +289,12 @@ MonoBehaviour:
   m_playerSentLocalTimeUTC: 0
   m_serverAtReceivedLocalTimeUTC: 0
   m_playerCallbackLocalTimeUTC: 0
-  m_timeBetweenRefresh: 5
   m_tickPingSendToReceived: 0
   m_tickPingSendToReceivedHalf: 0
   m_tickPingSendToReceivedHalfInMilliseconds: 0
   m_clientOffsetOfServerTimeWithoutPing: 0
   m_clientOffsetOfServerTimeWithPing: 0
+  m_timeBetweenRefresh: 5
 --- !u!114 &6446577435688160987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +312,54 @@ MonoBehaviour:
   m_onTextureGenerated:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &8137200327353159089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3977941887246160006}
+  - component: {fileID: 458996282691576670}
+  m_Layer: 0
+  m_Name: SentToServer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3977941887246160006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137200327353159089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7271424146464223891}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &458996282691576670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137200327353159089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2ea2de613a868458413ab3dee3203d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_DebugSentInOutToServer
+  m_playerInOut: {fileID: 2559320394782058673}
+  m_totalCharSent: 0
+  m_totalByteSent: 0
+  m_textSentSize: 0
+  m_textSent: 
+  m_byteSentSize: 0
+  m_byteSent: 
