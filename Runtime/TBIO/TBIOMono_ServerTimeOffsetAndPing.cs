@@ -27,11 +27,9 @@ namespace Eloi.TBIO
 
         public float m_timeBetweenRefresh = 5f;
 
-        public override void OnStartClient()
+        public override void OnStartAuthority()
         {
-            base.OnStartClient();
-            //if (!isLocalPlayer)
-            //    return;
+            base.OnStartAuthority();
             RequestOffsetAndPingUpdate();
         }
 
