@@ -1,9 +1,15 @@
-using UnityEngine;
 using Mirror;
-using System.Collections;
 using Mirror.Discovery;
+using System.Collections;
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using UnityEngine;
+using UnityEngine.Events;
 
-public class TBIOMono_FindOrBeServer : MonoBehaviour
+
+namespace Eloi.TBIO
+{
+    public class TBIOMono_FindOrBeServer : MonoBehaviour
 {
     [Tooltip("How long to wait for a server reply before giving up and becoming a host (in seconds)")]
     public float searchTimeout = 5.0f;
@@ -80,4 +86,5 @@ public class TBIOMono_FindOrBeServer : MonoBehaviour
             discovery.OnServerFound.RemoveListener(OnServerFound);
         }
     }
+}
 }

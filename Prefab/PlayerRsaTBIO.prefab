@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 9119655546380388528}
   - component: {fileID: 1700152876209615489}
   - component: {fileID: 4042548780084699580}
+  - component: {fileID: 7986476484013751663}
+  - component: {fileID: 6446577435688160987}
   m_Layer: 0
   m_Name: PlayerRsaTBIO
   m_TagString: Untagged
@@ -101,12 +103,27 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_validatedServerPublicKeyAsTagB58: 
-  m_onValidatedPublicKey:
+  m_onValidatedPublicKeyOnServer:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2559320394782058673}
         m_TargetAssemblyTypeName: Eloi.TBIO.TBIOMono_PlayerInOut, be.elab.tbiomirror.Runtime
         m_MethodName: SetServerOnlyAsymmetricPublicKey
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_onValidatedPublicKeyAll:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6446577435688160987}
+        m_TargetAssemblyTypeName: Eloi.TBIO.TBIOMono_SHATexture2D, be.elab.tbiomirror.Runtime
+        m_MethodName: SetTexture2DWithHashOf
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -190,3 +207,54 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7986476484013751663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1478425d74717448ff95b539ab77e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_ServerTimeOffsetAndPing
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_sharedClientPingInMilliseconds: 0
+  m_onTickOffset:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onPingInMilliseconds:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onPingInSeconds:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playerSentLocalTimeUTC: 0
+  m_serverAtReceivedLocalTimeUTC: 0
+  m_playerCallbackLocalTimeUTC: 0
+  m_timeBetweenRefresh: 5
+  m_tickPingSendToReceived: 0
+  m_tickPingSendToReceivedHalf: 0
+  m_tickPingSendToReceivedHalfInMilliseconds: 0
+  m_clientOffsetOfServerTimeWithoutPing: 0
+  m_clientOffsetOfServerTimeWithPing: 0
+--- !u!114 &6446577435688160987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800981014639819160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a0292875260cc46ba674cd15f0a4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: be.elab.tbiomirror.Runtime::Eloi.TBIO.TBIOMono_SHATexture2D
+  m_hash512: 
+  m_textureOfHash512: {fileID: 0}
+  m_onTextureGenerated:
+    m_PersistentCalls:
+      m_Calls: []

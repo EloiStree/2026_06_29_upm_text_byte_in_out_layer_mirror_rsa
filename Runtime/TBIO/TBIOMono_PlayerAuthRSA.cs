@@ -24,7 +24,8 @@ namespace Eloi.TBIO
         [TextArea(3, 8)]
         [SyncVar(hook = nameof(HookValidatedServerPublicKeyChanged))]
         [SerializeField] string m_validatedServerPublicKeyAsTagB58;
-        public UnityEvent<string> m_onValidatedPublicKey;
+        public UnityEvent<string> m_onValidatedPublicKeyOnServer;
+        public UnityEvent<string> m_onValidatedPublicKeyAll;
 
 
         [Header("Public Private Local B58")]
@@ -39,7 +40,9 @@ namespace Eloi.TBIO
         public void HookValidatedServerPublicKeyChanged(string oldValue, string newValue)
         {
             Debug.Log($"Validated server public key changed from\n\n {oldValue} \n\nto\n\n {newValue}\n\n");
-            m_onValidatedPublicKey?.Invoke(newValue);
+            if (isServer)
+                m_onValidatedPublicKeyOnServer?.Invoke(newValue);
+            m_onValidatedPublicKeyAll?.Invoke(newValue);
         }
 
 
@@ -111,8 +114,7 @@ namespace Eloi.TBIO
         {
             base.OnStartClient();
             LoadOrGenerateRsaKeySaved();
-            m_onValidatedPublicKey?.Invoke(m_clientPublicKeyB58);
-
+            m_onValidatedPublicKeyAll?.Invoke(m_clientPublicKeyB58);
             AddPlayerToDictonary();
         }
 

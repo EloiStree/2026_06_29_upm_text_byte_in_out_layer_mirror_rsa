@@ -287,25 +287,32 @@ namespace Eloi.TBIO
 
 
         #region CLIENT TO SERVER
-        [Command] [Client]
+        [Command] 
         void CmdSendBytesClientToServer(byte[] data)
         {
             if (data == null) return;
             m_onBytesReceivedFromClientToServer?.Invoke(data);
         }
-        [Command] [Client]
+
+        [Command] 
         void CmdSendTextClientToServer(string text)
         {
             if (text == null) return;
             m_onTextReceivedFromClientToServer?.Invoke(text);
         }
+        public bool IsOwnedByThisClient()
+        {
+            return netIdentity != null && netIdentity.isLocalPlayer;
+        }
 
         public void SendByteToServer(byte[] data)
         {
+            if (IsOwnedByThisClient()) return;
             CmdSendBytesClientToServer(data);
         }
         public void SendTextToServer(string text)
         {
+            if (IsOwnedByThisClient()) return;
             CmdSendTextClientToServer(text);
         }
         #endregion

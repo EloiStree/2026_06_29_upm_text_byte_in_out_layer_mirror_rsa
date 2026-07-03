@@ -26,6 +26,11 @@ namespace Eloi.TBIO
 
         public int m_lastSendInteger;
 
+        public bool m_useDebugLogStart = false;
+        public bool m_useDebugLogPingPong  = false;
+        public bool m_useDebugLogIntegerReceived = false;
+        public bool m_useDebugSoundPong = false;
+
         private IEnumerator Start()
         {
             while (true)
@@ -44,7 +49,8 @@ namespace Eloi.TBIO
             if(m_integerReceived==4)
             { 
                 m_integerReceived = BitConverter.ToInt32(bytes, 0);
-                Debug.Log("INT:"+m_integerReceived, this);
+                if (m_useDebugLogIntegerReceived)
+                    Debug.Log("INT:"+m_integerReceived, this);
             }
 
         }
@@ -54,14 +60,17 @@ namespace Eloi.TBIO
             {
 
                 m_startReceivedDate = "" + DateTime.Now.ToString("HH:mm:ss");
-                Debug.Log("START...", this);
-                if (m_startSound)
-                    m_startSound.Play();
+                if (m_useDebugLogStart)
+                    Debug.Log("START...", this);
+                if (m_useDebugSoundPong)
+                    if (m_startSound)
+                        m_startSound.Play();
             }
             if (text.StartsWith("PONG "))
             {
                 m_pongReceivedDate = "" + DateTime.Now.ToString("HH:mm:ss");
-                Debug.Log("PONG...", this);
+                if (m_useDebugLogPingPong)
+                    Debug.Log("PONG...", this);
             }
         }
     }

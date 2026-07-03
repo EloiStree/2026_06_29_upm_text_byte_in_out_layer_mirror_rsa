@@ -58,5 +58,11 @@ namespace Eloi.TBIO
             }
             TBIOMono_PlayerInOut.SendBytesToServerFromLocalPlayer(data);
         }
+
+        public void SendRandomInteger() => SendIntegerToServer(UnityEngine.Random.Range(-int.MaxValue, int.MaxValue));
+        public void SendRandomPositiveInteger() => SendIntegerToServer(UnityEngine.Random.Range(0, int.MaxValue));
+        public void SendRandomGamepadInteger() => SendIntegerToServer(UnityEngine.Random.Range(1800000000,1900000000));
+        
     }
+
 }

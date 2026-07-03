@@ -14,6 +14,7 @@ namespace Eloi.TBIO
         public UnityEvent<string, byte[]> m_onByteForRsaClient;
 
 
+        public bool m_useDebugLongPong = false;
 
         public IEnumerator Start()
         {
@@ -33,8 +34,10 @@ namespace Eloi.TBIO
         {
             if (text == "PING")
             {
-                m_onTextForRsaClient.Invoke(publicKey,"PONG "+publicKey);
-                Debug.Log("PONG...", this);
+                string pong = "PONG " + publicKey;
+                m_onTextForRsaClient.Invoke(publicKey, pong);
+                if (m_useDebugLongPong)
+                    Debug.Log(pong, this);
             }
         }
         public void ReceivedFromClientByte(string publicKey, byte[] data) {         
