@@ -1,7 +1,6 @@
-using Mirror;
+﻿using Mirror;
 using System.Collections;
 using UnityEngine;
-
 
 namespace Eloi.TBIO
 {
@@ -12,43 +11,58 @@ namespace Eloi.TBIO
 
         [Header("Reconnect Settings")]
         [SerializeField] private float reconnectInterval = 3f;
-
+        [SerializeField] private float initialDelay = 10f;
 
         // State
         private Coroutine reconnectCoroutine;
-
 
         private void OnEnable()
         {
             if (networkManager == null)
                 networkManager = NetworkManager.singleton;
-            reconnectCoroutine= StartCoroutine(ReconnectLoop());
+
+            // Stop any existing coroutine
+            if (reconnectCoroutine != null)
+                StopCoroutine(reconnectCoroutine);
+
+            reconnectCoroutine = StartCoroutine(ReconnectLoop());
         }
-      
 
-      
+        private void OnDisable()
+        {
+            if (reconnectCoroutine != null)
+            {
+                StopCoroutine(reconnectCoroutine);
+                reconnectCoroutine = null;
+            }
+        }
 
-        #region Reconnect Loop
-
-        public float waitBeforeStartingReconnectLoop = 10f;
         private IEnumerator ReconnectLoop()
         {
-            yield return new WaitForSeconds(waitBeforeStartingReconnectLoop);
+            // Initial delay
+            if (initialDelay > 0)
+                yield return new WaitForSeconds(initialDelay);
 
             while (true)
             {
-                if (NetworkClient.isConnected)
+                // If we're properly connected, just wait and check again later
+                if (NetworkClient.isConnected && NetworkClient.active)
                 {
                     yield return new WaitForSeconds(reconnectInterval);
-                    yield break;
+                    continue;
                 }
+
+                // We're not connected → try to reconnect
                 if (!NetworkClient.active)
+                {
+                    Debug.Log("[AutoReconnect] Client is disconnected. Attempting to reconnect...");
                     networkManager.StartClient();
+                }
+
+                // Wait before next check
                 yield return new WaitForSeconds(reconnectInterval);
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
-        #endregion
     }
 }
