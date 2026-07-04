@@ -169,6 +169,8 @@ namespace Eloi.TBIO
         string m_asymmetricPublicKey = "";
 
 
+        public bool m_isLocalPlayer;
+
         [Tooltip("Give a random negative number to player to be override by developer")]
         public bool m_giveRandomPlayerIndexOnStart = true;
 
@@ -352,7 +354,8 @@ namespace Eloi.TBIO
             if (m_useDebugLog)
                 Debug.Log("A new player has joined the game!", this);
 
-            if (netIdentity.isLocalPlayer)
+            m_isLocalPlayer = isLocalPlayer && isOwned ;
+            if (m_isLocalPlayer)
                 m_localPlayer = this;
 
         }

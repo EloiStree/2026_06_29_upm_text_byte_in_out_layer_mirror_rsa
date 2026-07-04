@@ -21,7 +21,8 @@ namespace Eloi.TBIO
 
         public void Refresh()
         {
-            m_isLocalPlayer= isLocalPlayer;
+            
+            m_isLocalPlayer = isLocalPlayer;
             m_isServer= isServer;
             m_isOwned= isOwned;
 
