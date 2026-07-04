@@ -12,6 +12,7 @@ public class TBIOMono_FetchLocalIP : MonoBehaviour
         public string m_stringViewSpliter = ", ";
         public UnityEvent<string[]> m_onLocalIpFound;
         public UnityEvent<string> m_onLocalIpFoundAsString;
+        public bool m_removeLocalhost = true;
         private void Start()
         {
             RefreshLocalIp();
@@ -54,7 +55,13 @@ public class TBIOMono_FetchLocalIP : MonoBehaviour
                 }
             }
 
+            if (m_removeLocalhost)
+            {
+                ipAddresses.Remove("localhost");
+                ipAddresses.Remove("127.0.0.1");
+            }
             return ipAddresses;
+
         }
     }
 }
