@@ -1,6 +1,6 @@
 {
   "name": "be.elab.tbiolayermirror",
-  "displayName": "\ud83e\uddf0:Text Byte In Out Layer with Mirror",
+  "displayName": "\ud83e\uddf0: Text Byte In Out Layer with Mirror",
   "version": "0.0.1",
   "unity": "2018.1",
   "description": "Abstract bridge between server and client code for modding in aim to learn code",

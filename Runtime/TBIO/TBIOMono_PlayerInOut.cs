@@ -63,14 +63,14 @@ namespace Eloi.TBIO
         {
             players = m_players;
         }
-        public static void GetPlayerByIndex(int playerIndex, out TBIOMono_PlayerInOut player)
+        public static void GetPlayersByIndex(int playerIndex, out TBIOMono_PlayerInOut[] player)
         {
-            player = m_players.Find(p => p.m_playerIndex == playerIndex);
+            player = m_players.FindAll(p => p.m_playerIndex == playerIndex).ToArray();
         }
 
-        public static void GetPlayerByPublicKey(string asymmetricPublicKey, out TBIOMono_PlayerInOut player)
+        public static void GetPlayersByPublicKey(string asymmetricPublicKey, out TBIOMono_PlayerInOut[] player)
         {
-            player = m_players.Find(p => p.m_asymmetricPublicKey == asymmetricPublicKey);
+            player = m_players.FindAll(p => p.m_asymmetricPublicKey == asymmetricPublicKey).ToArray();
         }   
 
         public static void GetPlayerIndexList(out List<int> playerIndexList)
@@ -103,7 +103,7 @@ namespace Eloi.TBIO
                 player.SendTextToThisPlayer(text);
             }
         }
-        public static void ServerOnlySendBytesToAllPlayer(byte[] data)
+        public static void ServerOnlySendByteToAllPlayer(byte[] data)
         {
             foreach (var player in m_players)
             {
@@ -113,31 +113,43 @@ namespace Eloi.TBIO
         }
 
         public static void ServerOnlySendTextToPlayerByIndex(int playerIndex, string text)
-        {
-            GetPlayerByIndex(playerIndex, out TBIOMono_PlayerInOut player);
-            if (player == null) return;
-            player.SendTextToThisPlayer(text);
+        {       
+            GetPlayersByIndex(playerIndex, out TBIOMono_PlayerInOut[] players);
+            if (players == null || players.Length == 0) return;
+            foreach (var player in players)
+            {
+                player.SendTextToThisPlayer(text);
+            }
         }
 
-        public static void ServerOnlySendBytesToPlayerByIndex(int playerIndex, byte[] data)
+        public static void ServerOnlySendByteToPlayerByIndex(int playerIndex, byte[] data)
         {
-            GetPlayerByIndex(playerIndex, out TBIOMono_PlayerInOut player);
-            if (player == null) return;
-            player.SendByteToThisPlayer(data);
+            GetPlayersByIndex(playerIndex, out TBIOMono_PlayerInOut[] players);
+            if (players == null || players.Length == 0) return;
+            foreach (var player in players)
+            {
+                player.SendByteToThisPlayer(data);
+            }
         }
 
         public static void ServerOnlySendTextToPlayerByPublicKey(string publicKey, string text)
         {
-            GetPlayerByPublicKey(publicKey, out TBIOMono_PlayerInOut player);
-            if (player == null) return;
-            player.SendTextToThisPlayer(text);
+            GetPlayersByPublicKey(publicKey, out TBIOMono_PlayerInOut[] players);
+            if (players == null || players.Length == 0) return;
+            foreach (var player in players)
+            {
+                player.SendTextToThisPlayer(text);
+            }
         }
 
-        public static void ServerOnlySendBytesToPlayerByPublicKey(string publicKey, byte[] data)
+        public static void ServerOnlySendByteToPlayerByPublicKey(string publicKey, byte[] data)
         {
-            GetPlayerByPublicKey(publicKey, out TBIOMono_PlayerInOut player);
-            if (player == null) return;
-            player.SendByteToThisPlayer(data);
+            GetPlayersByPublicKey(publicKey, out TBIOMono_PlayerInOut[] players);
+            if (players == null || players.Length == 0) return;
+            foreach (var player in players) 
+                {
+                player.SendByteToThisPlayer(data);
+            }
         }
         #endregion
 

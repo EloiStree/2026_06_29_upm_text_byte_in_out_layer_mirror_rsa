@@ -24,8 +24,8 @@ namespace Eloi.TBIO
         {
 
             InvokeRepeating(nameof(RefreshList), 0.1f, 1f);
-            m_toListenTo.m_events.m_onPlayerText?.AddListener(OnAnyPlayerTextForServer);
-            m_toListenTo.m_events.m_onPlayerByte?.AddListener(OnAnyPlayerBytesForServer);
+            m_toListenTo.m_events.m_onPlayerTextWithSource?.AddListener(OnAnyPlayerTextForServer);
+            m_toListenTo.m_events.m_onPlayerByteWithSource?.AddListener(OnAnyPlayerBytesForServer);
 
         }
 

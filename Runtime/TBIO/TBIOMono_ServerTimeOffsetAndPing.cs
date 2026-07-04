@@ -25,6 +25,11 @@ namespace Eloi.TBIO
         public ulong m_clientOffsetOfServerTimeWithoutPing;
         public ulong m_clientOffsetOfServerTimeWithPing;
 
+        public float m_offsetInSeconds;
+        public float m_offsetInMinutes;
+        public float m_offsetInHours;
+
+
         public float m_timeBetweenRefresh = 5f;
 
         public override void OnStartAuthority()
@@ -70,7 +75,7 @@ namespace Eloi.TBIO
             ComputerDeductionOfPing();
 
             m_sharedClientPingInMilliseconds = m_tickPingSendToReceivedHalfInMilliseconds;
-            m_sharedClientOffsetInMilliseconds= m_clientOffsetOfServerTimeWithPing;
+            m_sharedClientOffsetInMilliseconds= m_clientOffsetOfServerTimeWithPing / 10000;
         }
 
         void ComputerDeductionOfPing() {
@@ -93,7 +98,11 @@ namespace Eloi.TBIO
             m_clientOffsetOfServerTimeWithoutPing = m_serverAtReceivedLocalTimeUTC - m_playerSentLocalTimeUTC;
             m_clientOffsetOfServerTimeWithPing = m_clientOffsetOfServerTimeWithoutPing + m_tickPingSendToReceivedHalf;
 
-            m_onTickOffset?.Invoke(m_clientOffsetOfServerTimeWithPing);
+
+       m_offsetInSeconds = m_clientOffsetOfServerTimeWithPing / 10000000f;
+       m_offsetInMinutes = m_clientOffsetOfServerTimeWithPing / 10000000f / 60f;
+        m_offsetInHours = m_clientOffsetOfServerTimeWithPing / 10000000f / 3600f;
+        m_onTickOffset?.Invoke(m_clientOffsetOfServerTimeWithPing);
             m_onPingInMilliseconds?.Invoke(m_tickPingSendToReceivedHalfInMilliseconds);
             m_onPingInSeconds?.Invoke(m_tickPingSendToReceivedHalfInMilliseconds / 1000f);
         }
